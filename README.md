@@ -1,74 +1,84 @@
 # The Receiver-Limited Floor
 
-**The Receiver-Limited Floor: Rate-Distortion Bounds on Serial Decoding Throughput**
+**Paper 2 Experiments & Code**
 
-**Paper 2 in the FONS Constraint / Throughput Basin series**
+✅ Complete
 
----
-
-## Quick Summary
-
-Tests whether AI language model throughput is receiver-limited (independent of vocabulary size) using 1,749 translation model variants. The M-ary rate-distortion function R_M(ε) provides the theoretical framework.
-
-**Key Finding:** Bits-per-byte shows no correlation with log₂(vocabulary) across 1,749 models (p = 0.643). Throughput is receiver-limited, not sender-limited.
+**Paper Publication:** https://github.com/Windstorm-Institute/receiver-limited-floor  
+**Windstorm Institute:** https://windstorminstitute.org
 
 ---
 
-## Citation
+## Quick Start
 
-```bibtex
-@article{whitmer2026receiverlimitedfloor,
-  title={The Receiver-Limited Floor: Rate-Distortion Bounds on Serial Decoding Throughput},
-  author={Whitmer, Grant Lavell III},
-  journal={Windstorm Institute},
-  year={2026},
-  doi={10.5281/zenodo.19323194},
-  url={https://zenodo.org/records/19323194}
-}
+```bash
+# Clone and setup
+git clone https://github.com/Windstorm-Labs/receiver-limited-floor.git
+cd receiver-limited-floor
+pip install torch transformers datasets pandas matplotlib scipy
+
+# Run full experiment (8 hours, 1,749 models)
+python run_full_experiment.py
+
+# Or analyze existing results
+python analyze_full.py
 ```
 
 ---
 
-## Links
+## Reproducibility Info
 
-- **Website:** https://windstorminstitute.org
-- **Published Paper (Zenodo):** https://zenodo.org/records/19323194
-- **Windstorm Institute Community:** https://zenodo.org/communities/windstorm-institute/
-- **Experiments & Code:** https://github.com/Windstorm-Labs/receiver-limited-floor
-- **Compute Required:** ~8 hours on RTX 5090
+**Verified:** 2026-03-29 on RTX 5090
+- Python 3.11.6
+- PyTorch 2.2.0
+- Transformers 4.38.0
+- CUDA 12.1
 
----
-
-## Repository Contents
-
-- `paper.pdf` — Full academic paper
-- `article.html` — Accessible web version
+**Runtime:** ~8 hours for full 1,749 model sweep
 
 ---
 
-## The FONS Constraint / Throughput Basin Series
+## Results Preview
 
-| # | Paper | Key Finding | Status |
-|---|-------|-------------|--------|
-| 1 | [Fons Constraint](https://github.com/Windstorm-Institute/fons-constraint) | 64-codon alphabet derivation | Published |
-| 2 | [Receiver-Limited Floor](https://github.com/Windstorm-Institute/receiver-limited-floor) | Vocab-independent BPT | Published |
-| 3 | [Throughput Basin](https://github.com/Windstorm-Institute/throughput-basin) | 31-system convergence | Published |
-| 4 | [Dissipative Decoder](https://github.com/Windstorm-Institute/dissipative-decoder) | Regime A/B analysis | Published |
-| 5 | [Serial Decoding Basin τ](https://github.com/Windstorm-Institute/serial-decoding-basin) | τ = 4.16 ± 0.19 bits | Published |
-| 6 | [Inherited Constraint](https://github.com/Windstorm-Institute/inherited-constraint) | AI inherits from biology | Published |
-| 7 | AGI Extensions (in progress) | Data vs architecture test | — |
+**Key Result:** BPT independent of vocabulary size (p = 0.643)
+
+| Metric | Value |
+|--------|-------|
+| Models evaluated | 1,749 |
+| Mean BPB | 0.50 |
+| Spearman ρ (BPB vs log₂V) | 0.042 |
+| p-value | 0.643 |
+
+See `results/statistical_summary.txt` for full analysis.
+
+---
+
+## Series Index
+
+| # | Paper | Status | Key Result |
+|---|-------|--------|------------|
+| 1 | [Fons Constraint](./fons-constraint) | 📋 Planned | 64-codon alphabet |
+| 2 | [Receiver-Limited Floor](./receiver-limited-floor) | ✅ Complete | Vocab-independent BPT |
+| 3 | [Throughput Basin](./throughput-basin) | 📋 Planned | 31-system convergence |
+| 4 | [Dissipative Decoder](./dissipative-decoder) | 📋 Planned | Regime A/B analysis |
+| 5 | [Serial Decoding Basin τ](./serial-decoding-basin) | 📋 Planned | τ = 4.16 ± 0.19 bits |
+| 6 | [Inherited Constraint](./inherited-constraint) | 📋 Planned | AI inherits biology |
+| 7 | [AGI Extensions](./agi-extensions) | 🚧 In Progress | Data vs architecture |
+
+Legend: ✅ Complete | 🚧 In Progress | 📋 Planned
 
 
 
 ---
 
-## About This Series
+## About Windstorm-Labs
 
-The FONS (Fons Optimal Numerus Signorum) constraint and Throughput Basin papers investigate whether serial decoding systems — from ribosomes to language models — converge to fundamental information-processing limits. The series combines theoretical derivation, computational experiment, and cross-substrate comparison.
+This organization contains the experimental code, data, and analysis supporting the Windstorm Institute paper series. Each repository is designed for reproducibility and extension.
 
-**Principal Investigator:** Grant Lavell Whitmer III  
-**Affiliation:** Windstorm Institute, Fort Ann, NY
+**Questions?** Open an issue.  
+**Want to contribute?** Fork and PR.  
+**Found a bug?** Let us know.
 
 ---
 
-*License: CC BY 4.0*
+*License: MIT for code, CC BY 4.0 for data*
