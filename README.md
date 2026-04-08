@@ -1,67 +1,74 @@
-# Paper 2: The Receiver-Limited Floor
+# The Receiver-Limited Floor
 
-**Full title:** "The Receiver-Limited Floor: Rate-Distortion Bounds on Serial Decoding Throughput"
+**The Receiver-Limited Floor: Rate-Distortion Bounds on Serial Decoding Throughput**
 
-**Status:** Complete (March 28–29, 2025)  
-**Principal Investigator:** Grant Lavell Whitmer III  
-**Compute:** NVIDIA RTX 5090 (32GB VRAM)
+**Paper 2 in the FONS Constraint / Throughput Basin series**
 
 ---
 
-## Summary
+## Quick Summary
 
-The M-ary rate-distortion function R_M(ε) = log₂M − H_b(ε) − ε·log₂(M−1) provides a mechanistic floor for serial decoding throughput. This paper tests whether AI throughput is receiver-limited (independent of vocabulary size) using 1,749 translation model variants.
+Tests whether AI language model throughput is receiver-limited (independent of vocabulary size) using 1,749 translation model variants. The M-ary rate-distortion function R_M(ε) provides the theoretical framework.
 
-**Key finding:** Bits-per-byte (BPB) shows no correlation with log₂(vocabulary size) across 1,749 models (p = 0.643). Throughput is receiver-limited, not sender-limited.
-
----
-
-## Experiment: Vocabulary Sweep
-
-- **Models:** 1,749 Windy Pro translation models (OPUS-MT family, 157 language pairs)
-- **Vocab sizes:** 30,000 – 250,680 tokens
-- **Metric:** Bits-per-byte (BPB) on WikiText-2 test set
-- **Result:** Mean BPB = 0.50, independent of vocabulary
-
-### Statistical Summary
-
-```
-Linear fit: BPB ~ β₀ + β₁·log₂(V)
-β₀ = 2.6440, β₁ = -0.097869
-R² = 0.0077, p(β₁) = 0.576
-
-Spearman rank: ρ = 0.0418, p = 0.790
-
-Mean BPT: 4.644 ± 3.12 bits
-Median BPT: 3.751 bits
-IQR: [2.87, 5.05]
-In basin [3, 5.5]: 51.2% of models
-```
-
----
-
-## Files
-
-- `experiment-vocab-sweep/` — Full experimental code
-  - `run_full_experiment.py` — Main orchestration
-  - `analyze_full.py` — Statistical analysis
-  - `results/full_bpb_results.csv` — Raw data (237KB, 1,749 models)
-  - `results/statistical_summary.txt` — Key statistics
-  - `charts/` — 5 visualization outputs
+**Key Finding:** Bits-per-byte shows no correlation with log₂(vocabulary) across 1,749 models (p = 0.643). Throughput is receiver-limited, not sender-limited.
 
 ---
 
 ## Citation
 
 ```bibtex
-@article{whitmer2026receiver,
+@article{whitmer2026receiverlimitedfloor,
   title={The Receiver-Limited Floor: Rate-Distortion Bounds on Serial Decoding Throughput},
   author={Whitmer, Grant Lavell III},
   journal={Windstorm Institute},
-  year={2026}
+  year={2026},
+  doi={10.5281/zenodo.19323194},
+  url={https://zenodo.org/records/19323194}
 }
 ```
 
 ---
 
-*See companion papers for cross-substrate convergence (Paper 3) and thermodynamic grounding (Paper 4).*
+## Links
+
+- **Website:** https://windstorminstitute.org
+- **Published Paper (Zenodo):** https://zenodo.org/records/19323194
+- **Windstorm Institute Community:** https://zenodo.org/communities/windstorm-institute/
+- **Experiments & Code:** https://github.com/Windstorm-Labs/receiver-limited-floor
+- **Compute Required:** ~8 hours on RTX 5090
+
+---
+
+## Repository Contents
+
+- `paper.pdf` — Full academic paper
+- `article.html` — Accessible web version
+
+---
+
+## The FONS Constraint / Throughput Basin Series
+
+| # | Paper | Key Finding | Status |
+|---|-------|-------------|--------|
+| 1 | [Fons Constraint](https://github.com/Windstorm-Institute/fons-constraint) | 64-codon alphabet derivation | Published |
+| 2 | [Receiver-Limited Floor](https://github.com/Windstorm-Institute/receiver-limited-floor) | Vocab-independent BPT | Published |
+| 3 | [Throughput Basin](https://github.com/Windstorm-Institute/throughput-basin) | 31-system convergence | Published |
+| 4 | [Dissipative Decoder](https://github.com/Windstorm-Institute/dissipative-decoder) | Regime A/B analysis | Published |
+| 5 | [Serial Decoding Basin τ](https://github.com/Windstorm-Institute/serial-decoding-basin) | τ = 4.16 ± 0.19 bits | Published |
+| 6 | [Inherited Constraint](https://github.com/Windstorm-Institute/inherited-constraint) | AI inherits from biology | Published |
+| 7 | AGI Extensions (in progress) | Data vs architecture test | — |
+
+
+
+---
+
+## About This Series
+
+The FONS (Fons Optimal Numerus Signorum) constraint and Throughput Basin papers investigate whether serial decoding systems — from ribosomes to language models — converge to fundamental information-processing limits. The series combines theoretical derivation, computational experiment, and cross-substrate comparison.
+
+**Principal Investigator:** Grant Lavell Whitmer III  
+**Affiliation:** Windstorm Institute, Fort Ann, NY
+
+---
+
+*License: CC BY 4.0*
