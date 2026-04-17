@@ -11,6 +11,8 @@
 
 **[Windstorm-Institute/receiver-limited-floor](https://github.com/Windstorm-Institute/receiver-limited-floor)** — paper PDF, article HTML, Zenodo DOI
 
+**Website article:** [windstorminstitute.org/articles/receiver-limited-floor.html](https://windstorminstitute.org/articles/receiver-limited-floor.html)
+
 ## Quick Start
 
 ```bash
