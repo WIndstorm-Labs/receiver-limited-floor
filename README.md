@@ -16,9 +16,23 @@
 ```bash
 git clone https://github.com/Windstorm-Labs/receiver-limited-floor.git
 cd receiver-limited-floor
-pip install -r requirements.txt  # if present
-# See code/ or individual scripts for experiment instructions
+# Install deps (no requirements.txt yet — see Windstorm-Labs/throughput-experiments/requirements.txt
+# for the closest-known dependency pin: torch, transformers, datasets, accelerate, bitsandbytes,
+# numpy, scipy, pandas, scikit-learn, tqdm, tokenizers).
+
+# Canonical entry point: run_full_experiment.py
+#   - Subprocess isolation per model (CUDA recovery on crash)
+#   - Disk-managed model cache cleanup
+#   - Resumable across interruptions
+python run_full_experiment.py
 ```
+
+**Three `run_*.py` scripts are present in this repo** (legacy from iterative development):
+- `run_full_experiment.py` — **canonical**: subprocess isolation, disk management, resumable
+- `run_experiment_v2.py` — earlier robust version with CUDA recovery
+- `run_experiment.py` — original 5-step pipeline
+
+Use `run_full_experiment.py` unless you have a specific reason to use one of the older scripts.
 
 ## Hardware
 
