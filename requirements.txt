@@ -1,0 +1,22 @@
+# Paper 2: The Receiver-Limited Floor — Experiments & Code
+# Dependencies for the 1,749-model BPT sweep.
+# Pinned floors are the versions used during the original April 2026 run;
+# newer minor versions should work but have not been re-validated.
+
+# Core ML/DL
+torch>=2.2.0
+transformers>=4.38.0
+datasets>=2.14.0
+accelerate>=0.27.0
+bitsandbytes>=0.42.0
+tokenizers>=0.15.0
+
+# Scientific computing
+numpy>=1.24.0
+scipy>=1.12.0
+pandas>=2.1.0
+scikit-learn>=1.4.0
+matplotlib>=3.8.0
+
+# Utilities
+tqdm>=4.66.0
